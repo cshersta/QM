@@ -14,7 +14,7 @@ function App() {
     const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const newSocket = io(`http://${window.location.hostname}:3000`);
+      const newSocket = io(`http://${window.location.hostname}:3000`, { user: user });
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);

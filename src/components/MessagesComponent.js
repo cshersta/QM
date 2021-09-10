@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../Messages.css';
 
-function Messages({ socket }) {
+function Messages({ socket, user }) {
     const [messages, setMessages] = useState({});
 
     useEffect(() => {
@@ -23,7 +23,7 @@ function Messages({ socket }) {
 
         socket.on('message', messageListener);
         socket.on('deleteMessage', deleteMessageListener);
-        socket.emit('getMessages');
+        socket.emit('getMessages', user);
 
         return () => {
             socket.off('message', messageListener);
@@ -41,8 +41,8 @@ function Messages({ socket }) {
                         className="message-container"
                         title={`Sent at ${new Date(message.time).toLocaleTimeString()}`}
                     >
-                        <span className="user">{message.user.name}:</span>
-                        <span className="message">{message.value}</span>
+                        <span className="user">{message.user}:</span>
+                        <span className="message">{message.text}</span>
                         <span className="date">{new Date(message.time).toLocaleTimeString()}</span>
                     </div>
                 ))
