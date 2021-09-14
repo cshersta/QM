@@ -44,6 +44,7 @@ function Messages({ socket, user }) {
                         <span className="user">{message.user}:</span>
                         <span className="message">{message.text}</span>
                         <span className="date">{new Date(message.time).toLocaleTimeString()}</span>
+                        <span className="date">{new Date(message.time).toLocaleDateString('en-US')}</span>
                     </div>
                 ))
             }
