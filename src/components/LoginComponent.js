@@ -3,14 +3,22 @@ import {
     Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody,
 } from 'reactstrap';
 
-const Login = ({ loginForm, signUpForm, socket }) => {
+const Login = ({ loginForm, chatGroupReturn, signUpForm, socket }) => {
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
-    function handleSignUpSubmit(e) {
-        e.preventDefault()
+    function handleLogin(e) {
+        e.preventDefault();
+        socket.emit('getSelfChatGroup', userName, function (chatGroup) {
+            chatGroupReturn(chatGroup);
+            loginForm(userName);
+        });
+    }
+
+    function handleSignUp(e) {
+        e.preventDefault();
         const newUser = { userName, password };
         socket.emit('signUp', newUser);
         setUserName('');
@@ -27,9 +35,9 @@ const Login = ({ loginForm, signUpForm, socket }) => {
                     </div>
                 </div>
                 <Modal animation={false} isOpen={isLoginModalOpen} toggle={() => setIsLoginModalOpen(!isLoginModalOpen)}>
-                    <ModalHeader toggle={() => setIsLoginModalOpen(!isLoginModalOpen)}>Sign Up</ModalHeader>
+                    <ModalHeader toggle={() => setIsLoginModalOpen(!isLoginModalOpen)}>Login</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={() => loginForm(userName)}>
+                        <Form onSubmit={handleLogin}>
                             <FormGroup>
                                 <Label htmlFor="username">Username</Label>
                                 <Input type="text"
@@ -46,7 +54,7 @@ const Login = ({ loginForm, signUpForm, socket }) => {
                 <Modal animation={false} isOpen={isSignUpModalOpen} toggle={() => setIsSignUpModalOpen(!isSignUpModalOpen)}>
                     <ModalHeader toggle={() => setIsSignUpModalOpen(!isSignUpModalOpen)}>Sign Up</ModalHeader>
                     <ModalBody>
-                        <Form onSubmit={handleSignUpSubmit}>
+                        <Form onSubmit={handleSignUp}>
                             <FormGroup>
                                 <Label htmlFor="username">Username</Label>
                                 <Input type="text" id="username1" name="username"

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../Messages.css';
 
-function Messages({ socket, user }) {
+function Messages({ socket, user, chatGroup }) {
     const [messages, setMessages] = useState({});
 
     useEffect(() => {
@@ -23,7 +23,7 @@ function Messages({ socket, user }) {
 
         socket.on('message', messageListener);
         socket.on('deleteMessage', deleteMessageListener);
-        socket.emit('getMessages', user);
+        socket.emit('getMessages', user, chatGroup);
 
         return () => {
             socket.off('message', messageListener);

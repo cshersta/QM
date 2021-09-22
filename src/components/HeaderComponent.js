@@ -12,13 +12,15 @@ const Header = ({ logout, user }) => {
                     
                     <div className="col-2">
                         {user ? (
-                        user
+                        <div className="col-2">
+                            <Button outline >{user}</Button>
+                        </div>
                         ): ('')}
                     </div>
                     
                     {user ? (
                         <div className="col-2">
-                            <span className="fa fa-search fa-lg"></span>
+                        <Button outline ><span className="fa fa-search fa-lg"></span></Button>
                         </div>
                     ) : ('')}
                     

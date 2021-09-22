@@ -12,7 +12,7 @@ import './App.css';
 function App() {
     const [socket, setSocket] = useState(null);
     const [user, setUser] = useState(null);
-    const [searchUser, setSearchUser] = useState(null);
+    const [chatGroup, setChatGroup] = useState(null);
 
   useEffect(() => {
       const newSocket = io(`http://${window.location.hostname}:3000`, { user: user });
@@ -26,11 +26,11 @@ function App() {
           <div className="container">
               {user ? (
                       <div className="row">
-                      <ChatGroups user={user}  />
-                      <Chat user={user}  socket={socket} />
+                      <ChatGroups user={user} socket={socket} chatGroupReturn={chatGroup => setChatGroup(chatGroup)}  />
+                      <Chat user={user} socket={socket} chatGroup={chatGroup} />
                       </div>
                 ) : (
-                      <Login loginForm={username => setUser(username)} signUpForm={username => setUser(username)} socket={socket}  />
+                      <Login loginForm={username => setUser(username)} chatGroupReturn={chatGroup => setChatGroup(chatGroup)} signUpForm={username => setUser(username)} socket={socket}  />
             )}
             </div>
            <Footer />
