@@ -5,6 +5,7 @@ import Footer from './components/FooterComponent';
 import Chat from './components/ChatComponent';
 import ChatGroups from './components/ChatGroupsComponent';
 import Login from './components/LoginComponent';
+import { Container, Row, Col } from 'reactstrap';
 
 import './App.css';
 
@@ -21,19 +22,33 @@ function App() {
   }, [setSocket]);
 
   return (
-    <div className="App">
-          <Header logout={() => setUser(null)} user={user}  />
-          <div className="container">
-              {user ? (
-                      <div className="row">
-                      <ChatGroups user={user} socket={socket} chatGroupReturn={chatGroup => setChatGroup(chatGroup)}  />
-                      <Chat user={user} socket={socket} chatGroup={chatGroup} />
-                      </div>
+    <div className="app">
+          
+          
+          {user ? (
+              <Container>
+                      <Row>
+                          <Col>
+                              <Header logout={() => setUser(null)} user={user} />
+                          </Col>
+                      </Row>
+                      <Row>
+                            <Col sm="3">
+                                <ChatGroups user={user} socket={socket} chatGroupReturn={chatGroup => setChatGroup(chatGroup)}  />
+                            </Col>
+                            <Col sm="9">
+                              <Chat user={user} socket={socket} chatGroup={chatGroup} />
+                            </Col>
+                  </Row>
+                  <Row>
+                      <Footer />
+                  </Row>
+                </Container>
                 ) : (
                       <Login loginForm={username => setUser(username)} chatGroupReturn={chatGroup => setChatGroup(chatGroup)} signUpForm={username => setUser(username)} socket={socket}  />
             )}
-            </div>
-           <Footer />
+            
+           
     </div>
   );
 }

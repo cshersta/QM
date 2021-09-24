@@ -1,0 +1,13 @@
+create context / use context / context provider or use reducer to pass data around
+encrypt password / user messages
+user login with password
+field validation / error handling
+display possible users in system when searching
+css / bootstrap
+float header, groups, footer in same place
+testing / bug fixes
+	- stale date
+	- cross messaging between users (messages to wrong users)
+responsive / mobile css
+login page
+put online

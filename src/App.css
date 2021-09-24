@@ -1,19 +1,19 @@
-.app-header {
-    padding: 10px;
-    background-color: darkslategrey;
-    color: white;
+.app {
+    background-color: #090e11;
 }
 
-    .app-header > div {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
+
+.app-header {
+    background-color: #2a2f32;
+    color: #dfe0e2;
+    border-bottom: 1px solid #30383d;
+}
+
+  
 
 .app-footer {
     padding: 10px;
-    background-color: darkslategrey;
+    background-color: #323739;
     color: white;
 }
 
@@ -38,4 +38,25 @@
     border-bottom: 1px solid #eeeeee;
     cursor: pointer;
     
+}
+
+
+.groups {
+    background-color: #131c21;
+    cursor: pointer;
+    color: white;
+    border-bottom: 1px solid #30383d;
+}
+
+    .groups:hover {
+        background-color: #2d3134;
+    }
+
+.grouptitle {
+    color: #dfe0e2;
+    font-weight: bold;
+}
+
+.grouptext {
+    color: #9fa2a5;
 }

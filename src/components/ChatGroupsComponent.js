@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-    Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody
+    Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, Container, Row, Col, Card, CardHeader, CardBody, CardTitle, CardText
 } from 'reactstrap';
 var _ = require('lodash');
 
@@ -31,6 +31,10 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
         };
     }, [socket]);
 
+    const setGroupColor = () => {
+        const selectedColor = "323739";
+    }
+
     const handleGroupClick = (group) => {
         console.log("handleGroupClick");
         console.log(group);
@@ -53,26 +57,55 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
         setUserSearch('');
     }
 
+    //returns time if today, date if not
+    function calculateTimeDisplay(time) {
+        var curDate = new Date();
+        var date = new Date(time);
+        
+        if (curDate.getDate() == date.getDate() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
+            return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+        else {
+            return date.toLocaleDateString('en-US');
+        }
+    }
+
 
     return (
-        <div className="col-3">
-            <div>
+        <Container>
                 {[...Object.values(groups)]
-                    .map((group) => (
-                        <div key={group._id} styles="cursor:pointer" className="group-container" onClick={()=>handleGroupClick(group)}>
-                            <span className="user">{group.users.length > 1 ? _.without(group.users, user) : user}</span>
-                            <span className="message">{group.lastMessage ? group.lastMessage.text : '' }</span>
-                        </div>
+                .map((group) => (
+                    <Row key={group._id} className="groups"   onClick={() => handleGroupClick(group)}>
+                        <Col xs="1" className="p-2 my-auto">
+                            <span className="fa fa-user-circle fa-2x"></span>
+                        </Col>
+                        <Col xs={{ size: 10, offset: 1 }}>
+                            <Row>
+                                <Col xs={{ size: 8, offset: 0 }}>
+                                    <span className="grouptitle">{group.users.length > 1 ? _.without(group.users, user) : user}</span>
+                                </Col>
+                                <Col xs={{ size: 4, offset: 0 }}>
+                                    <span className="date">{group.lastMessage ? calculateTimeDisplay(group.lastMessage.time) : ''}</span>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={{ size: 12, offset: 0 }} >
+                                    <span className="grouptext">{group.lastMessage ? (group.lastMessage.text.length > 26 ? group.lastMessage.text.substr(0, 25) + "..." : group.lastMessage.text) : ''}</span>
+                                </Col>
+                            </Row>
+                        </Col>
+                     </Row>
                     ))
                 }
 
-            </div>
+            
 
 
-
-            <div className="col-2">
-                <Button outline onClick={() => setIsSearchModalOpen(!isSearchModalOpen)}><span className="fa fa-comment fa-lg"></span></Button>
-            </div>
+            <Row className="justify-content-end">
+                <Col className="col-2 align-self-end">
+                    <Button outline onClick={() => setIsSearchModalOpen(!isSearchModalOpen)}><span className="fa fa-comment fa-lg"></span></Button>
+                </Col>
+            </Row>
             <Modal animation={false} isOpen={isSearchModalOpen} toggle={() => setIsSearchModalOpen(!isSearchModalOpen)}>
                 <ModalHeader toggle={() => setIsSearchModalOpen(!isSearchModalOpen)}>Search</ModalHeader>
                 <ModalBody>
@@ -86,7 +119,7 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
                     </Form>
                 </ModalBody>
             </Modal>
-        </div>
+        </Container>
     );
 };
 

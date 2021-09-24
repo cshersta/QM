@@ -12,8 +12,8 @@ const Header = ({ logout, user }) => {
                     
                     <div className="col-2">
                         {user ? (
-                        <div className="col-2">
-                            <Button outline >{user}</Button>
+                        <div >
+                            <Button outline>{user} <span className="fa fa-bars fa-lg"></span></Button>
                         </div>
                         ): ('')}
                     </div>

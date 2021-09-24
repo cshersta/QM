@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Row, Col, Card, CardTitle, CardText } from 'reactstrap';
 import '../Messages.css';
 
 function Messages({ socket, user, chatGroup }) {
@@ -31,21 +32,37 @@ function Messages({ socket, user, chatGroup }) {
         };
     }, [socket]);
 
+    function calculateTimeDisplay(time) {
+        var curDate = new Date();
+        var date = new Date(time);
+
+        if (curDate.getDate() == date.getDate() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
+            return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+        else {
+            return date.toLocaleDateString('en-US');
+        }
+    }
+
     return (
         <div className="message-list">
             {[...Object.values(messages)]
                 .sort((a, b) => a.time - b.time)
                 .map((message) => (
-                    <div
-                        key={message.id}
-                        className="message-container"
+                    <Row key={message.id}
+                        className={message.user == user ? 'justify-content-end pb-1' : 'pb-1'}
                         title={`Sent at ${new Date(message.time).toLocaleTimeString()}`}
                     >
-                        <span className="user">{message.user}:</span>
-                        <span className="message">{message.text}</span>
-                        <span className="date">{new Date(message.time).toLocaleTimeString()}</span>
-                        <span className="date">{new Date(message.time).toLocaleDateString('en-US')}</span>
-                    </div>
+                        <Col xs={message.text.length > 35 ? '7' : 'auto'}>
+                            <Card body inverse className={message.user == user ? 'message usermessage' : 'message othermessage'}>
+                                {chatGroup[0].users.length > 2 && message.user != user ? (
+                                    <CardTitle className="m-0 user">{message.user}</CardTitle>
+                                ) : ("")}
+                                <CardText className="m-0">{message.text}</CardText>
+                                <span className="date">{calculateTimeDisplay(message.time)}</span>
+                            </Card>
+                        </Col>
+                    </Row >
                 ))
             }
         </div>
