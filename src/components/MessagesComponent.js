@@ -36,7 +36,7 @@ function Messages({ socket, user, chatGroup }) {
         var curDate = new Date();
         var date = new Date(time);
 
-        if (curDate.getDate() == date.getDate() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
+        if (curDate.getDate() === date.getDate() && curDate.getMonth() === date.getMonth() && curDate.getFullYear() === date.getFullYear()) {
             return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         }
         else {
@@ -45,17 +45,17 @@ function Messages({ socket, user, chatGroup }) {
     }
 
     return (
-        <div className="message-list">
+        <div >
             {[...Object.values(messages)]
                 .sort((a, b) => a.time - b.time)
                 .map((message) => (
                     <Row key={message.id}
-                        className={message.user == user ? 'justify-content-end pb-1' : 'pb-1'}
+                        className={message.user === user ? 'justify-content-end pb-1 m-0' : 'pb-1 m-0'}
                         title={`Sent at ${new Date(message.time).toLocaleTimeString()}`}
                     >
-                        <Col xs={message.text.length > 35 ? '7' : 'auto'}>
-                            <Card body inverse className={message.user == user ? 'message usermessage' : 'message othermessage'}>
-                                {chatGroup[0].users.length > 2 && message.user != user ? (
+                        <Col xs={message.text.length > 55 ? '7' : 'auto'}>
+                            <Card body inverse className={message.user === user ? 'message user-message' : 'message other-message'}>
+                                {chatGroup[0].users.length > 2 && message.user !== user ? (
                                     <CardTitle className="m-0 user">{message.user}</CardTitle>
                                 ) : ("")}
                                 <CardText className="m-0">{message.text}</CardText>

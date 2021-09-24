@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {
-    Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, Container, Row, Col, Card, CardHeader, CardBody, CardTitle, CardText
+    Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, Row, Col
 } from 'reactstrap';
 var _ = require('lodash');
 
@@ -31,10 +31,6 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
         };
     }, [socket]);
 
-    const setGroupColor = () => {
-        const selectedColor = "323739";
-    }
-
     const handleGroupClick = (group) => {
         console.log("handleGroupClick");
         console.log(group);
@@ -62,7 +58,7 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
         var curDate = new Date();
         var date = new Date(time);
         
-        if (curDate.getDate() == date.getDate() && curDate.getMonth() == date.getMonth() && curDate.getFullYear() == date.getFullYear()) {
+        if (curDate.getDate() === date.getDate() && curDate.getMonth() === date.getMonth() && curDate.getFullYear() === date.getFullYear()) {
             return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         }
         else {
@@ -72,7 +68,15 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
 
 
     return (
-        <Container>
+        <div>
+            <Row className="group-header" >
+                <Col xs="6" className="my-auto" >
+                    <Button outline>{user} <span className="fa fa-bars fa-lg"></span></Button>
+                </Col>
+                <Col xs={{ size: 1, offset: 3 }} className="my-auto">
+                    <Button outline onClick={() => setIsSearchModalOpen(!isSearchModalOpen)}><span className="fa fa-comment fa-lg"></span></Button>
+                </Col>
+            </Row>
                 {[...Object.values(groups)]
                 .map((group) => (
                     <Row key={group._id} className="groups"   onClick={() => handleGroupClick(group)}>
@@ -82,7 +86,7 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
                         <Col xs={{ size: 10, offset: 1 }}>
                             <Row>
                                 <Col xs={{ size: 8, offset: 0 }}>
-                                    <span className="grouptitle">{group.users.length > 1 ? _.without(group.users, user) : user}</span>
+                                    <span className="group-title">{group.users.length > 1 ? _.without(group.users, user) : user}</span>
                                 </Col>
                                 <Col xs={{ size: 4, offset: 0 }}>
                                     <span className="date">{group.lastMessage ? calculateTimeDisplay(group.lastMessage.time) : ''}</span>
@@ -90,7 +94,7 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
                             </Row>
                             <Row>
                                 <Col xs={{ size: 12, offset: 0 }} >
-                                    <span className="grouptext">{group.lastMessage ? (group.lastMessage.text.length > 26 ? group.lastMessage.text.substr(0, 25) + "..." : group.lastMessage.text) : ''}</span>
+                                    <span className="group-text">{group.lastMessage ? (group.lastMessage.text.length > 26 ? group.lastMessage.text.substr(0, 25) + "..." : group.lastMessage.text) : ''}</span>
                                 </Col>
                             </Row>
                         </Col>
@@ -98,14 +102,6 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
                     ))
                 }
 
-            
-
-
-            <Row className="justify-content-end">
-                <Col className="col-2 align-self-end">
-                    <Button outline onClick={() => setIsSearchModalOpen(!isSearchModalOpen)}><span className="fa fa-comment fa-lg"></span></Button>
-                </Col>
-            </Row>
             <Modal animation={false} isOpen={isSearchModalOpen} toggle={() => setIsSearchModalOpen(!isSearchModalOpen)}>
                 <ModalHeader toggle={() => setIsSearchModalOpen(!isSearchModalOpen)}>Search</ModalHeader>
                 <ModalBody>
@@ -119,7 +115,7 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
                     </Form>
                 </ModalBody>
             </Modal>
-        </Container>
+        </div>
     );
 };
 

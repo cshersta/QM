@@ -1,7 +1,10 @@
-.app {
+html {
     background-color: #090e11;
 }
 
+.app {
+    background-color: #090e11;
+}
 
 .app-header {
     background-color: #2a2f32;
@@ -9,37 +12,52 @@
     border-bottom: 1px solid #30383d;
 }
 
-  
-
-.app-footer {
-    padding: 10px;
-    background-color: #323739;
-    color: white;
-}
-
-    .app-footer > div {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-.chat-container {
+.login {
+    width: 50%;
+    height:50%;
+    border-radius: 15px;
+    background-color: #2a2f32;
+    /*text-align: center;
+    vertical-align: middle;
+    justify-content: center;*/
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.group-container {
-    display: flex;
-    flex-direction: row;
-    padding: 0.5rem;
-    border-bottom: 1px solid #eeeeee;
-    cursor: pointer;
-    
+.chat-header {
+    background-color: #2a2f32;
+    color: #dfe0e2;
+    height: 50px;
+    margin-bottom:3px;
+    /*position:sticky;
+    top:0px;
+    z-index:99;*/
 }
 
+.chat {
+    background-color: #0a0c0d;
+}
+
+.chat-input {
+    background-color: #2a2f32;
+    color: #dfe0e2;
+    height: 50px;
+    /*position:sticky;
+    top:0px;
+    z-index:99;*/
+}
+
+.group-header {
+    background-color: #2a2f32;
+    color: #dfe0e2;
+    border-right: 1px solid #30383d;
+    height: 50px;
+}
 
 .groups {
     background-color: #131c21;
@@ -48,15 +66,15 @@
     border-bottom: 1px solid #30383d;
 }
 
-    .groups:hover {
-        background-color: #2d3134;
-    }
+.groups:hover {
+    background-color: #2d3134;
+}
 
-.grouptitle {
+.group-title {
     color: #dfe0e2;
     font-weight: bold;
 }
 
-.grouptext {
+.group-text {
     color: #9fa2a5;
 }

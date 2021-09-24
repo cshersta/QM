@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
-import Header from './components/HeaderComponent';
-import Footer from './components/FooterComponent';
 import Chat from './components/ChatComponent';
 import ChatGroups from './components/ChatGroupsComponent';
 import Login from './components/LoginComponent';
@@ -27,22 +25,14 @@ function App() {
           
           {user ? (
               <Container>
-                      <Row>
-                          <Col>
-                              <Header logout={() => setUser(null)} user={user} />
-                          </Col>
-                      </Row>
-                      <Row>
-                            <Col sm="3">
+                       <Row>
+                            <Col xs="3">
                                 <ChatGroups user={user} socket={socket} chatGroupReturn={chatGroup => setChatGroup(chatGroup)}  />
                             </Col>
-                            <Col sm="9">
-                              <Chat user={user} socket={socket} chatGroup={chatGroup} />
+                            <Col xs="9">
+                                <Chat user={user} socket={socket} chatGroup={chatGroup} logout={() => setUser(null)} />
                             </Col>
-                  </Row>
-                  <Row>
-                      <Footer />
-                  </Row>
+                       </Row>
                 </Container>
                 ) : (
                       <Login loginForm={username => setUser(username)} chatGroupReturn={chatGroup => setChatGroup(chatGroup)} signUpForm={username => setUser(username)} socket={socket}  />

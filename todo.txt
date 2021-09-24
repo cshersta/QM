@@ -1,6 +1,7 @@
 create context / use context / context provider or use reducer to pass data around
 encrypt password / user messages
 user login with password
+token based authentication
 field validation / error handling
 display possible users in system when searching
 css / bootstrap
@@ -9,5 +10,6 @@ testing / bug fixes
 	- stale date
 	- cross messaging between users (messages to wrong users)
 responsive / mobile css
-login page
 put online
+animate message and group loading
+highlite active group

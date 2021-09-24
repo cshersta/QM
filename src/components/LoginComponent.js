@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
-    Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody,
+    Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, Container, Row, Col
 } from 'reactstrap';
 
 const Login = ({ loginForm, chatGroupReturn, signUpForm, socket }) => {
@@ -27,13 +27,13 @@ const Login = ({ loginForm, chatGroupReturn, signUpForm, socket }) => {
     }
 
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-8">
+            <Container className="login" >
+                <Row>
+                    <Col>
                         <Button outline onClick={() => setIsLoginModalOpen(!isLoginModalOpen)} ><span className="fa fa-sign-in fa-lg"></span> Login</Button>
                         <Button outline onClick={() => setIsSignUpModalOpen(!isSignUpModalOpen)} ><span className="fa fa-user-plus fa-lg"></span> Sign Up</Button>
-                    </div>
-                </div>
+                    </Col>
+                </Row>
                 <Modal animation={false} isOpen={isLoginModalOpen} toggle={() => setIsLoginModalOpen(!isLoginModalOpen)}>
                     <ModalHeader toggle={() => setIsLoginModalOpen(!isLoginModalOpen)}>Login</ModalHeader>
                     <ModalBody>
@@ -69,7 +69,7 @@ const Login = ({ loginForm, chatGroupReturn, signUpForm, socket }) => {
                         </Form>
                     </ModalBody>
                 </Modal>
-            </div>
+            </Container>
 
         );
 };
