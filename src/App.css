@@ -13,16 +13,13 @@ html {
 }
 
 .login {
-    width: 50%;
-    height:50%;
+    width: 40%;
+    height:40%;
     border-radius: 15px;
     background-color: #2a2f32;
-    /*text-align: center;
-    vertical-align: middle;
-    justify-content: center;*/
-    display: flex;
+    /*display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;*/
     position: absolute;
     top: 50%;
     left: 50%;
@@ -59,15 +56,22 @@ html {
     height: 50px;
 }
 
-.groups {
+.group {
     background-color: #131c21;
     cursor: pointer;
     color: white;
     border-bottom: 1px solid #30383d;
 }
 
-.groups:hover {
+.group:hover {
     background-color: #2d3134;
+}
+
+.group-selected {
+    background-color: #323739;
+    cursor: pointer;
+    color: white;
+    border-bottom: 1px solid #30383d;
 }
 
 .group-title {
@@ -77,4 +81,8 @@ html {
 
 .group-text {
     color: #9fa2a5;
+}
+
+.err {
+    color: red;
 }

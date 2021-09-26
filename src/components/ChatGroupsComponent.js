@@ -10,17 +10,14 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
     const [userSearch, setUserSearch] = useState('');
     const [userReturn, setUserReturn] = useState('');
     const [groups, setGroups] = useState('');
+    const [groupSelected, setGroupSelected] = useState('');
 
     useEffect(() => {
         const chatGroupListener = (group) => {
             console.log("chatGroupListener ");
             console.log(group);
-            
+            setGroupSelected(group[0]);
             setGroups(group);
-            _.forEach(groups, function (group) {
-                //console.log("forEach group");
-                //console.log(group);
-            });
         };
 
         socket.on('groups', chatGroupListener);
@@ -34,6 +31,7 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
     const handleGroupClick = (group) => {
         console.log("handleGroupClick");
         console.log(group);
+        setGroupSelected(group);
         chatGroupReturn([group]);
     }
 
@@ -77,9 +75,9 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
                     <Button outline onClick={() => setIsSearchModalOpen(!isSearchModalOpen)}><span className="fa fa-comment fa-lg"></span></Button>
                 </Col>
             </Row>
-                {[...Object.values(groups)]
-                .map((group) => (
-                    <Row key={group._id} className="groups"   onClick={() => handleGroupClick(group)}>
+            {[...Object.values(groups)]
+                .map((group, index) => (
+                    <Row key={group._id} className={group._id === groupSelected._id ? 'group-selected':'group'}   onClick={() => handleGroupClick(group)}>
                         <Col xs="1" className="p-2 my-auto">
                             <span className="fa fa-user-circle fa-2x"></span>
                         </Col>

@@ -2,14 +2,23 @@ create context / use context / context provider or use reducer to pass data arou
 encrypt password / user messages
 user login with password
 token based authentication
-field validation / error handling
-display possible users in system when searching
-css / bootstrap
-float header, groups, footer in same place
-testing / bug fixes
-	- stale date
-	- cross messaging between users (messages to wrong users)
+field validation / error handling ***
+display possible users in system when searching ***
+css / bootstrap **
+	- make message display area size static
+	- float header, groups, footer in same place
+testing / bug fixes **
+	- stale date **
+	- cross messaging between users (messages to wrong users) - I'm not sure this happens *
+		- chatgroup variable return in login should be set at the initialization of the chatgroup component instead *
+			- self chat group should be initialized when user is created
+	- initialize isValid to false
 responsive / mobile css
-put online
-animate message and group loading
-highlite active group
+put online ***
+	- upload to git
+	- merge this todo list into tickets
+	- display project on netlify
+animate message and group loading *
+trim and toLowerCase (except pswd) all user input
+login page - clear err on modal close
+update server returns to use proper header, response codes ? - research proper socket standards

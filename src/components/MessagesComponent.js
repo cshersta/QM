@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Row, Col, Card, CardTitle, CardText } from 'reactstrap';
+/*import { Transition } from 'react-transition-group';*/
 import '../Messages.css';
 
 function Messages({ socket, user, chatGroup }) {
@@ -64,7 +65,7 @@ function Messages({ socket, user, chatGroup }) {
                         </Col>
                     </Row >
                 ))
-            }
+                }
         </div>
     );
 }
