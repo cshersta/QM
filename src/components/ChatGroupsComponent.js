@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {
-    Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, Row, Col
+    Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, Container, Row, Col
 } from 'reactstrap';
+import Chat from './ChatComponent';
 var _ = require('lodash');
 
 export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
@@ -17,6 +18,7 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
             console.log("chatGroupListener ");
             console.log(group);
             setGroupSelected(group[0]);
+            chatGroupReturn(group);
             setGroups(group);
         };
 
@@ -35,18 +37,14 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
         chatGroupReturn([group]);
     }
 
-    const handleSearchSubmit = (e) => {
-        e.preventDefault()
-        console.log(userSearch);
-        socket.emit('getUser', userSearch, function (userTemp) {
-            console.log(userTemp);
-            setUserReturn(userTemp);
-            console.log(userReturn);
-            let userArray = [userTemp.username, user];
-            socket.emit('getChatGroup', userArray, function (chatGroup) {
-                console.log(chatGroup);
-                chatGroupReturn(chatGroup);
-            });
+    const handleUserClick = (userSelected) => {
+        let userArray = [userSelected.username, user];
+        socket.emit('getChatGroup', userArray, function (chatGroup) {
+            console.log(chatGroup);
+            setIsSearchModalOpen(!isSearchModalOpen)
+            setUserReturn('');
+            setGroupSelected(chatGroup[0]);
+            chatGroupReturn(chatGroup);
         });
         setUserSearch('');
     }
@@ -62,6 +60,21 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
         else {
             return date.toLocaleDateString('en-US');
         }
+    }
+
+    function handleChange(value) {
+        console.log(value);
+        socket.emit('getUsersContaining', value, function (usersReturn) {
+            console.log(usersReturn);
+            setUserReturn(usersReturn);
+            /*setUserReturn(userTemp);
+            console.log(userReturn);
+            let userArray = [userTemp.username, user];
+            socket.emit('getChatGroup', userArray, function (chatGroup) {
+                console.log(chatGroup);
+                chatGroupReturn(chatGroup);
+            });*/
+        });
     }
 
 
@@ -103,14 +116,32 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
             <Modal animation={false} isOpen={isSearchModalOpen} toggle={() => setIsSearchModalOpen(!isSearchModalOpen)}>
                 <ModalHeader toggle={() => setIsSearchModalOpen(!isSearchModalOpen)}>Search</ModalHeader>
                 <ModalBody>
-                    <Form onSubmit={handleSearchSubmit}>
+                    <Form autoComplete="off">
                         <FormGroup>
                             <Label htmlFor="username">Username</Label>
                             <Input type="text" id="username" name="username"
-                                onChange={e => setUserSearch(e.target.value)} />
+                                onChange={e => handleChange(e.target.value)} />
                         </FormGroup>
-                        <Button outline type="submit" value="submit" color="primary" ><span className="fa fa-search fa-lg"></span> Search</Button>
+                        
                     </Form>
+                    <Container>
+                    {[...Object.values(userReturn)]
+                        .map((user, index) => (
+                            <Row key={user._id} className="group" onClick={() => handleUserClick(user)}>
+                                <Col xs="1" className="p-2 my-auto">
+                                    <span className="fa fa-user-circle fa-2x"></span>
+                                </Col>
+                                <Col xs={{ size: 10, offset: 1 }}>
+                                    <Row>
+                                        <Col xs={{ size: 8, offset: 0 }}>
+                                            <span className="group-title">{user.username}</span>
+                                        </Col>
+                                    </Row>
+                                </Col>
+                            </Row>
+                        ))
+                    }
+                    </Container>
                 </ModalBody>
             </Modal>
         </div>
