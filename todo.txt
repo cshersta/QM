@@ -1,15 +1,18 @@
 create context / use context / context provider or use reducer to pass data around
-encrypt password / user messages
+encrypt (hash) password / user messages
 user login with password
-token based authentication
+token or session based authentication
 css / bootstrap **
-	- make message display area size static
-	- float header, groups, footer in same place
+	- responsive / mobile css **
+	- chatgroups sidebar scrollable **
 testing / bug fixes **
 	- stale date **
 	- cross messaging between users (messages to wrong users) - I'm not sure this happens *
-	- initialize isValid to false
-responsive / mobile css
+	- signup button - disable by default and if invalid -> initialize isValid to false, set isValid to false if username invalid
+	- Console errors
+		- strict mode error - triggered when a modal is opened
+		- unused variables
+	- sockets seem to shared between users. Login with different windows / users at the same time and the data gets intermingled ****
 put online ***
 	- upload to git
 	- merge this todo list into tickets
@@ -19,3 +22,4 @@ trim and toLowerCase (except pswd) all user input
 login page - clear err on modal close
 update server returns to use proper header, response codes ? - research proper socket standards
 Search should return both users and as well as chatGroups that the user is a part of
+add message box submit button -> useful for mobile

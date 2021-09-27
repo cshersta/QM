@@ -128,7 +128,9 @@ const Login = ({ loginForm, chatGroupReturn, signUpForm, socket }) => {
                                 <Form>
                                     <Label htmlFor="username">Username</Label><span className="err">  <ErrorMessage name="username" />{err}</span>
                                     <Field className="form-control" name="username" validate={validateUsername} />
-                                    <Label htmlFor="password">Password</Label><span className="err">  <ErrorMessage name="password" /></span>
+                                    <Label htmlFor="password">Password</Label>
+                                    <span data-toggle="tooltip"  title="Please note: passwords are not currently encrypted. Don't use your good passwords." className="btn fa fa-info-circle"></span>
+                                    <span className="err">  <ErrorMessage name="password" /></span>
                                     <Field className="form-control" name="password" type="password" />
                                     <Button outline type="submit" value="submit" color="primary" disabled={!isValid} ><span className="fa fa-user-plus fa-lg"></span> Sign Up</Button>
                              </Form>

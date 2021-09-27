@@ -23,7 +23,7 @@ export const Chat = ({ socket, user, chatGroup, logout }) => {
                     <Button outline onClick={() => logout()}><span className="fa fa-sign-out fa-lg"></span> Logout</Button>
                 </Col>
             </Row>
-            <Row className="chat" >
+            <Row className="chat"    >
                 <Col  key={chatGroup[0]._id}>
                     <Messages user={user} socket={socket} chatGroup={chatGroup} />
                     <MessageInput user={user} socket={socket} chatGroup={chatGroup} />

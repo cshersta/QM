@@ -26,7 +26,7 @@ function App() {
           {user ? (
               <Container>
                        <Row>
-                            <Col xs="3">
+                            <Col xs="3" className="test" >
                                 <ChatGroups user={user} socket={socket} chatGroupReturn={chatGroup => setChatGroup(chatGroup)}  />
                             </Col>
                             <Col xs="9">

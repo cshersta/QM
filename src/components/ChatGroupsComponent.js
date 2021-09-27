@@ -53,7 +53,7 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
     function calculateTimeDisplay(time) {
         var curDate = new Date();
         var date = new Date(time);
-        
+
         if (curDate.getDate() === date.getDate() && curDate.getMonth() === date.getMonth() && curDate.getFullYear() === date.getFullYear()) {
             return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         }
@@ -88,6 +88,7 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
                     <Button outline onClick={() => setIsSearchModalOpen(!isSearchModalOpen)}><span className="fa fa-comment fa-lg"></span></Button>
                 </Col>
             </Row>
+            <div className="group-box">
             {[...Object.values(groups)]
                 .map((group, index) => (
                     <Row key={group._id} className={group._id === groupSelected._id ? 'group-selected':'group'}   onClick={() => handleGroupClick(group)}>
@@ -112,6 +113,7 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
                      </Row>
                     ))
                 }
+            </div>
 
             <Modal animation={false} isOpen={isSearchModalOpen} toggle={() => setIsSearchModalOpen(!isSearchModalOpen)}>
                 <ModalHeader toggle={() => setIsSearchModalOpen(!isSearchModalOpen)}>Search</ModalHeader>
@@ -124,7 +126,7 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
                         </FormGroup>
                         
                     </Form>
-                    <Container>
+                    <Container className="scroll">
                     {[...Object.values(userReturn)]
                         .map((user, index) => (
                             <Row key={user._id} className="group" onClick={() => handleUserClick(user)}>

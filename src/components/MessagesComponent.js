@@ -46,7 +46,7 @@ function Messages({ socket, user, chatGroup }) {
     }
 
     return (
-        <div >
+        <div className="chat-box"  >
             {[...Object.values(messages)]
                 .sort((a, b) => a.time - b.time)
                 .map((message) => (
