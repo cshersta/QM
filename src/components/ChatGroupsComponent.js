@@ -2,13 +2,11 @@ import React, { useEffect, useState } from 'react';
 import {
     Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, Container, Row, Col
 } from 'reactstrap';
-import Chat from './ChatComponent';
 var _ = require('lodash');
 
 export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
 
     const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
-    const [userSearch, setUserSearch] = useState('');
     const [userReturn, setUserReturn] = useState('');
     const [groups, setGroups] = useState('');
     const [groupSelected, setGroupSelected] = useState('');
@@ -46,7 +44,6 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
             setGroupSelected(chatGroup[0]);
             chatGroupReturn(chatGroup);
         });
-        setUserSearch('');
     }
 
     //returns time if today, date if not

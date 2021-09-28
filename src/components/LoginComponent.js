@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import {
-    Button, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, Container, Row, Col
+    Button, Label, Modal, ModalHeader, ModalBody, Container, Row, Col
 } from 'reactstrap';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from "yup"
 
 
 const Login = ({ loginForm, chatGroupReturn, signUpForm, socket }) => {
-    const [userName, setUserName] = useState("");
-    const [password, setPassword] = useState("");
     const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     const [err, setErr] = useState("");
