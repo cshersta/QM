@@ -10,6 +10,7 @@
     "font-awesome": "^4.7.0",
     "formik": "^2.2.9",
     "lodash": "^4.17.21",
+    "npm-run-all": "^4.1.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux-form": "^1.16.14",
@@ -21,7 +22,10 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm-run-all --parallel watch:server start:web",
+    "start:web": "react-scripts start",
+    "start:server": "node qm-server/bin/www",
+    "watch:server": "nodemon --watch qm-server/bin/www qm-server/bin/www",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
