@@ -1,6 +1,10 @@
+Uses ReactJS, NodeJS, and Sockets to make a chat application. Something like whatsapp web
+
 <h1>TODO</h1>
 
-Create context / use context / context provider or use reducer to pass data around
+Create context / use context / context provider or use redux / reducer to pass data around **
+
+	- redux toolkit?
 
 Encrypt (hash) password / user messages
 
