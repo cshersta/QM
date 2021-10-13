@@ -51,7 +51,7 @@ const Login = ({ loginForm, chatGroupReturn, signUpForm, socket }) => {
                 </Row>
                 <Row className="p-4" >
                     <Col xs={{ size: 2, offset: 5 }}>
-                        <a className="btn btn-social-icon" href="https://bitbucket.org/cshersta/workspace/projects/QM"><i className="fa fa-github fa-3x"></i></a>
+                        <a className="btn btn-social-icon" href="https://github.com/cshersta/QM"><i className="fa fa-github fa-3x"></i></a>
                     </Col>
                 </Row>
                 <Modal animation={false} isOpen={isLoginModalOpen} toggle={() => setIsLoginModalOpen(!isLoginModalOpen)}>
