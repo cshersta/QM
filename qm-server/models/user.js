@@ -7,7 +7,9 @@ var User = new Schema({
         type: String,
         default: '',
         unique: true,
-        required: true
+        required: true,
+        lowercase: true,
+        trim: true
     },
     firstname: {
         type: String,
@@ -15,16 +17,20 @@ var User = new Schema({
     },
     lastname: {
         type: String,
-        default: ''
+        default: '',
+        trim: true
     },
     password: {
         type: String,
         default: '',
-        required: true
+        required: true,
+        trim: true
     },
     email: {
         type: String,
-        default: ''
+        default: '',
+        lowercase: true,
+        trim: true
     },
     image: {
         type: String,

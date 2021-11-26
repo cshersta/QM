@@ -36,12 +36,12 @@ Testing / bug fixes **
 
 Animate message and group loading *
 
-Trim and toLowerCase (except pswd) all user input
-
 Login page - clear err on modal close
 
-Update server returns to use proper header, response codes ? - research proper socket standards
+Update server returns to use proper header, response codes (REST) - https://socket.io/docs/v4/how-it-works/
 
 Search should return both users and as well as chatGroups that the user is a part of
 
 Add message box submit button -> useful for mobile
+
+Implement more efficient data transfer method - as Socket.IO library keeps an open TCP connection to the server, it apparently can result in high battery drain -> use Firebase Cloud Messaging?

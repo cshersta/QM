@@ -22,3 +22,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+qm-server/bin/qm-server.cert
+qm-server/bin/qm-server.key

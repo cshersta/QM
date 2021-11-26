@@ -7,7 +7,8 @@ var ChatGroup = new Schema({
     users: [{ type: String, default:'' }],
     name: {
         type: String,
-        default: ''
+        default: '',
+        trim: true
     },
     image: {
         type: String,
@@ -15,7 +16,8 @@ var ChatGroup = new Schema({
     },
     description: {
         type: String,
-        default: ''
+        default: '',
+        trim: true
     },
     lastMessage: {
         type: mongoose.Schema.Types.ObjectId,

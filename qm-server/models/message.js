@@ -22,7 +22,8 @@ var Message = new Schema({
     },
     text: {
         type: String,
-        default: ''
+        default: '',
+        trim: true
     },
     time: {
         type: Number,

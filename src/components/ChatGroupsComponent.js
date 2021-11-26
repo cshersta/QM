@@ -64,13 +64,6 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
         socket.emit('getUsersContaining', value, function (usersReturn) {
             console.log(usersReturn);
             setUserReturn(usersReturn);
-            /*setUserReturn(userTemp);
-            console.log(userReturn);
-            let userArray = [userTemp.username, user];
-            socket.emit('getChatGroup', userArray, function (chatGroup) {
-                console.log(chatGroup);
-                chatGroupReturn(chatGroup);
-            });*/
         });
     }
 

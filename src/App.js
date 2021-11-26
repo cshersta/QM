@@ -14,7 +14,7 @@ function App() {
     const [chatGroup, setChatGroup] = useState(null);
 
   useEffect(() => {
-      const newSocket = io(`http://${window.location.hostname}:3000`, { user: user });
+      const newSocket = io(`https://${window.location.hostname}:3000`, { secure: true,  user: user });
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);
@@ -26,7 +26,7 @@ function App() {
           {user ? (
               <Container>
                        <Row>
-                            <Col xs="3" className="test" >
+                      <Col xs="3" className="group-sidebar" >
                                 <ChatGroups user={user} socket={socket} chatGroupReturn={chatGroup => setChatGroup(chatGroup)}  />
                             </Col>
                             <Col xs="9">

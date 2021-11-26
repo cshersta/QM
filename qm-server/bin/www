@@ -7,8 +7,9 @@ var socketio = require('socket.io');
  */
 
 var app = require('../app');
-var debug = require('debug')('chat-server:server');
-var http = require('http');
+var debug = require('debug')('qm-server:server');
+var https = require('https');
+var fs = require('fs');
 
 /**
  * Get port from environment and store in Express.
@@ -18,10 +19,27 @@ var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
- * Create HTTP server.
+ * Create HTTPS server.
  */
+const keyPath = './bin/qm-server.key';
+const certPath = './bin/qm-server.cert';
 
-var server = http.createServer(app);
+if (fs.existsSync(keyPath) && fs.existsSync(certPath)) {
+    var options = {
+        key: fs.readFileSync(keyPath),
+        cert: fs.readFileSync(certPath),
+        requestCert: true,
+        rejectUnauthorized: false
+    };
+  }
+else{
+      var options = {
+            requestCert: true,
+            rejectUnauthorized: false
+        };
+}
+
+var server = https.createServer(options, app);
 var io = socketio(server,{
   cors: {
     origin: '*',

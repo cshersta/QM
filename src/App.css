@@ -31,9 +31,6 @@ html {
     color: #dfe0e2;
     height: 50px;
     margin-bottom:3px;
-    /*position:sticky;
-    top:0px;
-    z-index:99;*/
 }
 
 ::-webkit-scrollbar {
@@ -87,9 +84,6 @@ html {
     background-color: #2a2f32;
     color: #dfe0e2;
     height: 50px;
-    /*position:sticky;
-    top:0px;
-    z-index:99;*/
 }
 
 .group-header {
@@ -100,10 +94,10 @@ html {
 }
 
 .group-box {
-    height: 80vh;
+    /*height: 80vh;*/
     /*overflow-y: overlay;
     overflow-x:visible;*/
-
+    
 }
 
 .group {
@@ -113,6 +107,11 @@ html {
     border-bottom: 1px solid #30383d;
 }
 
+.group-sidebar {
+    height: 80vh;
+    border-bottom: 1px solid #30383d;
+    overflow-y: overlay;
+}
 .scroll {
     height: 40vh;
     overflow-y: auto;
