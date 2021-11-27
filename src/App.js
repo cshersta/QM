@@ -14,7 +14,7 @@ function App() {
     const [chatGroup, setChatGroup] = useState(null);
 
   useEffect(() => {
-      const newSocket = io(`https://${window.location.hostname}:3000`, { secure: true,  user: user });
+      const newSocket = io(`https://${window.location.hostname}:443`, { secure: true,  user: user });
     setSocket(newSocket);
     return () => newSocket.close();
   }, [setSocket]);
