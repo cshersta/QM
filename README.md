@@ -1,6 +1,20 @@
-Uses ReactJS, NodeJS, and Sockets to make a chat application. Something like whatsapp web
 
-<h1>TODO</h1>
+![JavaScript](https://img.shields.io/badge/-JavaScript-black?style=plastic&logo=javascript)
+![React](https://img.shields.io/badge/-React-3b2e5a?style=plastic&logo=react)
+![Node.JS](https://img.shields.io/badge/-Node.JS-black?style=plastic&logo=Node.js)
+![MongoDB](https://img.shields.io/badge/-MongoDB-black?style=plastic&logo=mongodb)
+![Socket.io](https://img.shields.io/badge/Socket.io-010101?&style=for-the-badge&logo=Socket.io&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=plastic&logo=bootstrap)
+![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
+
+# Quantum Messaging
+> This is project is for my own learning purposes. Uses ReactJS, NodeJS, and Sockets to make a chat application. Something like whatsapp web
+> Live demo [_here_](https://codysherstan.netlify.app).
+
+## Project Status
+Project is: _in progress_
+
+## TODO
 
 Create context / use context / context provider or use redux / reducer to pass data around **
 
@@ -45,3 +59,7 @@ Search should return both users and as well as chatGroups that the user is a par
 Add message box submit button -> useful for mobile
 
 Implement more efficient data transfer method - as Socket.IO library keeps an open TCP connection to the server, it apparently can result in high battery drain -> use Firebase Cloud Messaging?
+
+## Acknowledgements
+- This project was inspired by the full stack web developer program taken through coursera
+- This project was started with and heavily expanded from [this tutorial](https://developer.okta.com/blog/2021/07/14/socket-io-react-tutorial).
