@@ -3,13 +3,12 @@
 ![React](https://img.shields.io/badge/-React-3b2e5a?style=plastic&logo=react)
 ![Node.JS](https://img.shields.io/badge/-Node.JS-black?style=plastic&logo=Node.js)
 ![MongoDB](https://img.shields.io/badge/-MongoDB-black?style=plastic&logo=mongodb)
-![Socket.io](https://img.shields.io/badge/Socket.io-010101?&style=for-the-badge&logo=Socket.io&logoColor=white)
+![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=plastic&logo=Socket.io&logoColor=white)
 ![Bootstrap](https://img.shields.io/badge/-Bootstrap-563D7C?style=plastic&logo=bootstrap)
-![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)
 
 # Quantum Messaging
 > This is project is for my own learning purposes. Uses ReactJS, NodeJS, and Sockets to make a chat application. Something like whatsapp web
-> Live demo [_here_](https://codysherstan.netlify.app).
+> Live demo [_here_]().
 
 ## Project Status
 Project is: _in progress_
