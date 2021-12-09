@@ -39,12 +39,12 @@ const Login = ({ loginForm, chatGroupReturn, signUpForm, socket }) => {
         return (
             <Container className="login" >
                 <Row className="p-4" >
-                    <Col xs={{ size: 9, offset: 2 }}>
+                    <Col xs={{ size: 9, offset: 3 }}>
                         <a className="btn btn-social-icon" href="https://www.linkedin.com/in/cody-sherstan-ab5a1315a/">A project by Cody Sherstan <i className="fa fa-linkedin fa-2x"></i></a>
                     </Col>
                 </Row>
                 <Row className="p-4" >
-                    <Col xs={{ size: 9, offset: 3 }}>
+                    <Col xs={{ size: 9, offset: 4 }}>
                         <Button outline onClick={() => setIsLoginModalOpen(!isLoginModalOpen)} ><span className="fa fa-sign-in fa-lg"></span> Login</Button>
                         <Button outline onClick={() => setIsSignUpModalOpen(!isSignUpModalOpen)} ><span className="fa fa-user-plus fa-lg"></span> Sign Up</Button>
                     </Col>
@@ -87,6 +87,7 @@ const Login = ({ loginForm, chatGroupReturn, signUpForm, socket }) => {
                             {({ errors, touched, isValid }) => (
                                 <Form>
                                     <Label htmlFor="username">Username</Label><span className="err">  <ErrorMessage name="username" />{err}</span>
+                                    <span title="For sample data use username: guest, password: 1234" className="btn fa fa-info-circle"></span>
                                     <Field className="form-control" name="username" />
                                     <Label htmlFor="password">Password</Label><span className="err">  <ErrorMessage name="password" /></span>
                                     <Field className="form-control" name="password" type="password" />

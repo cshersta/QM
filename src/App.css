@@ -26,6 +26,10 @@ html {
     transform: translate(-50%, -50%);
 }
 
+    .login a {
+        font-weight: bold;
+    }
+
 .chat-header {
     background-color: #2a2f32;
     color: #dfe0e2;

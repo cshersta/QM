@@ -21,8 +21,8 @@ app.set('port', port);
 /**
  * Create HTTPS server.
  */
-const keyPath = './bin/qm-server.key';
-const certPath = './bin/qm-server.cert';
+const keyPath = './qm-server/bin/qm-server.key';
+const certPath = './qm-server/bin/qm-server.cert';
 
 if (fs.existsSync(keyPath) && fs.existsSync(certPath)) {
     var options = {
