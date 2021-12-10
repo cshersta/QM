@@ -23,7 +23,7 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "npm-run-all --parallel watch:server start:web",
+    "start": "npm-run-all --parallel start:server start:web",
     "start:web": "react-scripts start",
     "start:server": "node qm-server/bin/www",
     "watch:server": "nodemon --watch qm-server/bin/www qm-server/bin/www",
