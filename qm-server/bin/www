@@ -1,5 +1,6 @@
 var chat = require('../chat');
 var socketio = require('socket.io');
+require('dotenv').config();
 //#!/usr/bin/env node
 
 /**
@@ -15,7 +16,7 @@ var fs = require('fs');
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '443');
+var port = normalizePort(process.env.IOPORT || 5002);
 app.set('port', port);
 
 /**
@@ -24,20 +25,12 @@ app.set('port', port);
 const keyPath = './qm-server/bin/qm-server.key';
 const certPath = './qm-server/bin/qm-server.cert';
 
-if (fs.existsSync(keyPath) && fs.existsSync(certPath)) {
-    var options = {
+var options = {
         key: fs.readFileSync(keyPath),
         cert: fs.readFileSync(certPath),
         requestCert: true,
         rejectUnauthorized: false
     };
-  }
-else{
-      var options = {
-            requestCert: true,
-            rejectUnauthorized: false
-        };
-}
 
 var server = https.createServer(options, app);
 var io = socketio(server,{

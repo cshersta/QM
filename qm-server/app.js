@@ -10,7 +10,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 const url = config.mongoUrl;
-const connect = mongoose.connect(url);
+const connect = mongoose.connect(process.env.MONGODB_URI || url);
 
 connect.then((db) => {
     console.log('Connected correctly to server');
