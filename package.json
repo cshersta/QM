@@ -28,8 +28,12 @@
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
   },
+  "engines": {
+    "node": "14.17.6"
+  },
   "scripts": {
-    "start": "npm-run-all --parallel start:server start:web",
+    "start1": "npm-run-all --parallel start:server start:web",
+    "start": "react-scripts start",
     "start:web": "react-scripts start",
     "start:server": "node qm-server/bin/www",
     "watch:server": "nodemon --watch qm-server/bin/www qm-server/bin/www",

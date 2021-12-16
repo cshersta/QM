@@ -1,0 +1,1 @@
+web: node ./qm-server/bin/www
