@@ -26,8 +26,8 @@ var Message = new Schema({
         trim: true
     },
     time: {
-        type: Number,
-        default: Date.now()
+        type: Date,
+        default: Date.now
     },
     fwdFrom: {
         type: mongoose.Schema.Types.ObjectId,

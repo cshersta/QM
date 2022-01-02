@@ -8,8 +8,10 @@
 
 # Quantum Messaging
 > This is project is for my own learning purposes. Uses ReactJS, NodeJS, and Sockets to make a chat application. 
+
 > Something like whatsapp web.
-> Live demo [_here_]().
+
+> Live demo [_here_](https://quantum-messaging.herokuapp.com/).
 
 ## Project Status
 Project is: _in progress_
@@ -33,8 +35,6 @@ Css / bootstrap **
 	- chatgroups sidebar scrollable **
 
 Testing / bug fixes **
-
-	- stale date **
 
 	- cross messaging between users (messages to wrong users) - I'm not sure this happens *
 
