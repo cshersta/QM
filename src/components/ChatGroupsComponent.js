@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
     Button, Form, FormGroup, Input, Label, Modal, ModalHeader, ModalBody, Container, Row, Col
 } from 'reactstrap';
+import FadeIn from 'react-fade-in';
 var _ = require('lodash');
 
 export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
@@ -69,41 +70,35 @@ export const ChatGroups = ({ user, socket, chatGroupReturn }) => {
 
 
     return (
-        <div>
-            <Row className="group-header" >
-                <Col xs="6" className="my-auto" >
-                    <Button outline>{user} <span className="fa fa-bars fa-lg"></span></Button>
-                </Col>
-                <Col xs={{ size: 1, offset: 3 }} className="my-auto">
-                    <Button outline onClick={() => setIsSearchModalOpen(!isSearchModalOpen)}><span className="fa fa-comment fa-lg"></span></Button>
-                </Col>
-            </Row>
-            <div className="group-box">
-            {[...Object.values(groups)]
-                .map((group, index) => (
-                    <Row key={group._id} className={group._id === groupSelected._id ? 'group-selected':'group'}   onClick={() => handleGroupClick(group)}>
-                        <Col xs="1" className="p-2 my-auto">
-                            <span className="fa fa-user-circle fa-2x"></span>
-                        </Col>
-                        <Col xs={{ size: 10, offset: 1 }}>
-                            <Row>
-                                <Col xs={{ size: 8, offset: 0 }}>
-                                    <span className="group-title">{group.users.length > 1 ? _.without(group.users, user) : user}</span>
-                                </Col>
-                                <Col xs={{ size: 4, offset: 0 }}>
-                                    <span className="date">{group.lastMessage ? calculateTimeDisplay(group.lastMessage.time) : ''}</span>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={{ size: 12, offset: 0 }} >
-                                    <span className="group-text">{group.lastMessage ? (group.lastMessage.text.length > 26 ? group.lastMessage.text.substr(0, 25) + "..." : group.lastMessage.text) : ''}</span>
-                                </Col>
-                            </Row>
-                        </Col>
-                     </Row>
-                    ))
-                }
-            </div>
+        <div className="group-sidebar">
+            
+            <FadeIn>
+                {[...Object.values(groups)]
+                    .map((group, index) => (
+                        <Row key={group._id} className={group._id === groupSelected._id ? 'group-selected':'group'}   onClick={() => handleGroupClick(group)}>
+                            <Col xs="1" className="p-2 my-auto">
+                                <span className="fa fa-user-circle fa-2x"></span>
+                            </Col>
+                            <Col xs={{ size: 10, offset: 1 }}>
+                                <Row>
+                                    <Col xs={{ size: 8, offset: 0 }}>
+                                        <span className="group-title">{group.users.length > 1 ? _.without(group.users, user) : user}</span>
+                                    </Col>
+                                    <Col xs={{ size: 4, offset: 0 }}>
+                                        <span className="date">{group.lastMessage ? calculateTimeDisplay(group.lastMessage.time) : ''}</span>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col xs={{ size: 12, offset: 0 }} >
+                                        <span className="group-text">{group.lastMessage ? (group.lastMessage.text.length > 26 ? group.lastMessage.text.substr(0, 25) + "..." : group.lastMessage.text) : ''}</span>
+                                    </Col>
+                                </Row>
+                            </Col>
+                         </Row>
+                        ))
+                    }
+            </FadeIn>
+
 
             <Modal animation={false} isOpen={isSearchModalOpen} toggle={() => setIsSearchModalOpen(!isSearchModalOpen)}>
                 <ModalHeader toggle={() => setIsSearchModalOpen(!isSearchModalOpen)}>Search</ModalHeader>
